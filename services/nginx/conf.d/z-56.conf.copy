@@ -1,0 +1,36 @@
+server {
+    listen       80;
+    server_name  xm1-local.rotom-x.com;
+    root   /www/php56/xm1;
+    index  index.php index.html index.htm;
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location ~ \.php$ {
+         fastcgi_pass   php56:9000;
+         include        fastcgi-php.conf;
+         include        fastcgi_params;
+    }
+}
+
+server {
+    listen       80;
+    server_name  xm3-ft-local.rotom-x.com;
+    root   /www/php56/xm3_fanti;
+    index  index.php index.html index.htm;
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location ~ \.php$ {
+         fastcgi_pass   php56:9000;
+         include        fastcgi-php.conf;
+         include        fastcgi_params;
+    }
+}
+

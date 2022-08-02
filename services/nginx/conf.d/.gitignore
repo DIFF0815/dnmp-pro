@@ -2,3 +2,5 @@
 !.gitignore
 !certs/localhost/
 !localhost.conf.copy
+!z-56.conf.copy
+!z-74.conf.copy
