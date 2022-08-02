@@ -24,7 +24,7 @@ services:
     restart: always
     networks:
       extnetwork:
-        ipv4_address: 172.18.0.20
+        ipv4_address: 172.20.0.20
   #  php:
   #    build:
   #      context: ./services/php
@@ -37,7 +37,7 @@ services:
   #    expose:
   #      - 9501
   #    extra_hosts:
-  #      - "www.site1.com:172.17.0.1"
+  #      - "www.site1.com:172.20.0.1"
   #    volumes:
   #      - ${SOURCE_DIR}:/www/:rw
   #      - ${PHP_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
@@ -82,7 +82,7 @@ services:
       - "9614:9514"
       - "9615:9515"
     extra_hosts:
-      - "www.site1.com:172.17.0.1"
+      - "www.site1.com:172.20.0.1"
     volumes:
       - ${SOURCE_DIR}:/www/:rw
       - ${PHP80_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
@@ -103,7 +103,7 @@ services:
       - SYS_PTRACE
     networks:
       extnetwork:
-        ipv4_address: 172.18.0.31
+        ipv4_address: 172.20.0.31
 
   php74:
     build:
@@ -137,7 +137,7 @@ services:
       - "9514:9514"
       - "9515:9515"
     extra_hosts:
-      - "www.site1.com:172.17.0.1"
+      - "www.site1.com:172.20.0.1"
     environment:
       XDEBUG_CONFIG: "idekey=PHPSTORM"
       PHP_IDE_CONFIG: "serverName=phpIde"
@@ -161,7 +161,7 @@ services:
       - SYS_PTRACE
     networks:
       extnetwork:
-        ipv4_address: 172.18.0.21
+        ipv4_address: 172.20.0.21
 
   #  php72:
   #    build:
@@ -175,7 +175,7 @@ services:
   #    expose:
   #      - 9501
   #    extra_hosts:
-  #      - "www.site1.com:172.17.0.1"
+  #      - "www.site1.com:172.20.0.1"
   #    volumes:
   #      - ${SOURCE_DIR}:/www/:rw
   #      - ${PHP72_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
@@ -228,7 +228,7 @@ services:
       - SYS_PTRACE
     networks:
       extnetwork:
-        ipv4_address: 172.18.0.22
+        ipv4_address: 172.20.0.22
 
   #  php54:
   #    build:
@@ -487,4 +487,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.18.0.0/16
+        - subnet: 172.20.0.0/16
