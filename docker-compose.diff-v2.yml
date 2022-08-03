@@ -166,39 +166,43 @@ services:
       extnetwork:
         ipv4_address: 172.20.0.21
 
-  #  php72:
-  #    build:
-  #      context: ./services/php
-  #      args:
-  #        PHP_VERSION: php:${PHP72_VERSION}-fpm-alpine
-  #        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
-  #        PHP_EXTENSIONS: ${PHP72_EXTENSIONS}
-  #        TZ: "$TZ"
-  #    container_name: php72
-  #    expose:
-  #      - 9501
-  #    extra_hosts:
-  #      - "www.site1.com:172.20.0.1"
-  #    volumes:
-  #      - ${SOURCE_DIR}:/www/:rw
-  #      - ${PHP72_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
-  #      - ${PHP72_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
-  #      - ${PHP72_LOG_DIR}:/var/log/php
-  #      - ${DATA_DIR}/composer:/tmp/composer
-  #      - ${SUPERVISOR_LOG}:/var/log/supervisor/:rw
-  #      - ${SUPERVISOR_CONFIG}:/etc/supervisor/conf.d/:rw
-  #      - ${SUPERVISOR_CONF_FILE}:/etc/supervisor/supervisord.conf:ro
-  #    restart: always
-  #    command:
-  #      - /bin/sh
-  #      - -c
-  #      - |
-  #        /usr/local/sbin/php-fpm -D
-  #        supervisord -n -c /etc/supervisor/supervisord.conf
-  #    cap_add:
-  #      - SYS_PTRACE
-  #    networks:
-  #      - default
+  php72:
+    build:
+      context: ./services/php
+      args:
+        PHP_VERSION: php:${PHP72_VERSION}-fpm-alpine
+        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
+        PHP_EXTENSIONS: ${PHP72_EXTENSIONS}
+        TZ: "$TZ"
+    container_name: php72
+    expose:
+      - 9501
+    extra_hosts:
+      - "www.site1.com:172.20.0.1"
+    environment:
+      XDEBUG_CONFIG: "idekey=PHPSTORM"
+      PHP_IDE_CONFIG: "serverName=phpIde"
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP72_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      - ${PHP72_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ${PHP72_LOG_DIR}:/var/log/php
+      - ${DATA_DIR}/composer:/tmp/composer
+      - ${SUPERVISOR_LOG}:/var/log/supervisor/:rw
+      - ${SUPERVISOR_CONFIG}:/etc/supervisor/conf.d/:rw
+      - ${SUPERVISOR_CONF_FILE}:/etc/supervisor/supervisord.conf:ro
+    restart: always
+    command:
+      - /bin/sh
+      - -c
+      - |
+        /usr/local/sbin/php-fpm -D
+        supervisord -n -c /etc/supervisor/supervisord.conf
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      extnetwork:
+        ipv4_address: 172.20.0.23
 
   php56:
     build:
