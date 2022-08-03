@@ -702,6 +702,25 @@ if [[ -z "${EXTENSIONS##*,sdebug,*}" ]]; then
     fi
 fi
 
+if [[ -z "${EXTENSIONS##*,yasd,*}" ]]; then
+    echo "---------- Install yasd ----------"
+    isPhpVersionGreaterOrEqual 7 2
+
+    if [[ "$?" = "1" ]]; then
+             #curl -SL "https://github.com/swoole/yasd/archive/refs/tags/v0.3.9.tar.gz" -o yasd-0.3.9.tar.gz \
+             mkdir -p yasd \
+             && apk add --no-cache boost boost-dev \
+             && tar -xf yasd-0.3.9.tar.gz -C yasd --strip-components=1 \
+             && rm yasd-0.3.9.tar.gz \
+             && cd yasd \
+             && phpize \
+             && ./configure \
+             && make clean && make && make install
+    else
+        echo "---------- PHP Version>= 7.2----------"
+    fi
+fi
+
 if [ "${PHP_EXTENSIONS}" != "" ]; then
     apk del .build-deps \
     && docker-php-source delete
