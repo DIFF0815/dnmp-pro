@@ -49,3 +49,5 @@
 * ![图片1](./phpstrom-yasd-3.png)
 
 ### 配置vscode
+* 配置launch.json
+* ![图片1](./vscode-yasd-1.png)
