@@ -54,7 +54,7 @@
 * 配置launch.json
 * ![图片1](./vscode-yasd-1.png)
 
-## ide配置xdebug(php5.6-php7.1)
+## ide配置xdebug(php5.6-php7.1)-浏览器需要安装xdebug扩展
 ### 配置phpstrom 
 * ![图片1](./phpstrom-xdebug-1.png)
 * ![图片1](./phpstrom-xdebug-2.png)
