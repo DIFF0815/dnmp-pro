@@ -16,6 +16,7 @@
   ```
 
 ## debug调试
+## php72以上使用yasd调试,php56使用xdebug调试
 * 推荐使用 Yasd 进行 Swoole 调试，类似 Xdebug，支持php-fpm，完美支持协程，支持断点调试、单步追踪、watch 变量；
 * php.ini 配置添加下面内容
   ```shell
@@ -39,7 +40,8 @@
 * .env文件里面添加yasd扩展
 * 上面的在dnmp环境已经配好了（查看使用ysad安装成功 php -v 成功显示有：with Yasd v0.3.9-alpha, Our Copyright, by codinghuang）
 * 特别说明：<font color=red>如果使用hyperf框架的话断点必须打到代理类</font>
-## ide配置
+
+## ide配置yasd(php7.2以上)
 ### 配置phpstrom 
 * [参考1](https://github.com/swoole/yasd/issues/136) 
 * [yasd](https://github.com/swoole/yasd)
@@ -51,3 +53,12 @@
 ### 配置vscode
 * 配置launch.json
 * ![图片1](./vscode-yasd-1.png)
+
+## ide配置xdebug(php5.6-php7.1)
+### 配置phpstrom 
+* ![图片1](./phpstrom-xdebug-1.png)
+* ![图片1](./phpstrom-xdebug-2.png)
+* ![图片1](./phpstrom-xdebug-3.png)
+* ![图片1](./phpstrom-xdebug-4.png)
+* ![图片1](./phpstrom-xdebug-5.png)
+* ![图片1](./phpstrom-xdebug-6.png)
