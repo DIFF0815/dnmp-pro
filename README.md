@@ -57,8 +57,12 @@
 ## ide配置xdebug(php5.6-php7.1)-浏览器需要安装xdebug扩展
 ### 配置phpstrom 
 * ![图片1](./phpstrom-xdebug-1.png)
-* ![图片1](./phpstrom-xdebug-2.png)
-* ![图片1](./phpstrom-xdebug-3.png)
-* ![图片1](./phpstrom-xdebug-4.png)
-* ![图片1](./phpstrom-xdebug-5.png)
-* ![图片1](./phpstrom-xdebug-6.png)
+* ![图片2](./phpstrom-xdebug-2.png)
+* ![图片3](./phpstrom-xdebug-3.png)
+* ![图片4](./phpstrom-xdebug-4.png)
+* ![图片5](./phpstrom-xdebug-5.png)
+* ![图片6](./phpstrom-xdebug-6.png)
+
+### 配置vscode
+* 配置launch.json
+* ![图片1](./vscode-xdebug-1.png)
