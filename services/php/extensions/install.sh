@@ -635,6 +635,29 @@ if [[ -z "${EXTENSIONS##*,swoole,*}" ]]; then
     fi
 fi
 
+if [[ -z "${EXTENSIONS##*,rdkafka,*}" ]]; then
+    echo "---------- Install rdkafka ----------"
+    apk add --no-cache librdkafka-dev
+    isPhpVersionGreaterOrEqual 7 0
+
+    if [[ "$?" = "1" ]]; then
+        installExtensionFromTgz rdkafka-6.0.3
+    else
+        installExtensionFromTgz rdkafka-4.1.2
+    fi
+fi
+
+if [[ -z "${EXTENSIONS##*,zookeeper,*}" ]]; then
+    echo "---------- Install zookeeper ----------"
+    isPhpVersionGreaterOrEqual 7 0
+
+    if [[ "$?" = "1" ]]; then
+        installExtensionFromTgz zookeeper
+    else
+        installExtensionFromTgz zookeeper-0.5.0
+    fi
+fi
+
 if [[ -z "${EXTENSIONS##*,zip,*}" ]]; then
     echo "---------- Install zip ----------"
     # Fix: https://github.com/docker-library/php/issues/797
@@ -676,32 +699,32 @@ if [[ -z "${EXTENSIONS##*,xlswriter,*}" ]]; then
     fi
 fi
 
-if [[ -z "${EXTENSIONS##*,rdkafka,*}" ]]; then
-    echo "---------- Install rdkafka ----------"
-    isPhpVersionGreaterOrEqual 5 6
-
-    if [[ "$?" = "1" ]]; then
-        apk add librdkafka-dev
-        printf "\n" | pecl install rdkafka
-        docker-php-ext-enable rdkafka
-    else
-        echo "---------- PHP Version>= 5.6----------"
-    fi
-fi
-
-if [[ -z "${EXTENSIONS##*,zookeeper,*}" ]]; then
-    echo "---------- Install zookeeper ----------"
-    isPhpVersionGreaterOrEqual 7 0
-
-    if [[ "$?" = "1" ]]; then
-        apk add re2c
-        apk add libzookeeper-dev --repository http://${CONTAINER_PACKAGE_URL}/alpine/edge/testing/
-        printf "\n" | pecl install zookeeper
-        docker-php-ext-enable zookeeper
-    else
-        echo "---------- PHP Version>= 7.0----------"
-    fi
-fi
+#if [[ -z "${EXTENSIONS##*,rdkafka,*}" ]]; then
+#    echo "---------- Install rdkafka ----------"
+#    isPhpVersionGreaterOrEqual 5 6
+#
+#    if [[ "$?" = "1" ]]; then
+#        apk add librdkafka-dev
+#        printf "\n" | pecl install rdkafka
+#        docker-php-ext-enable rdkafka
+#    else
+#        echo "---------- PHP Version>= 5.6----------"
+#    fi
+#fi
+#
+#if [[ -z "${EXTENSIONS##*,zookeeper,*}" ]]; then
+#    echo "---------- Install zookeeper ----------"
+#    isPhpVersionGreaterOrEqual 7 0
+#
+#    if [[ "$?" = "1" ]]; then
+#        apk add re2c
+#        apk add libzookeeper-dev --repository http://${CONTAINER_PACKAGE_URL}/alpine/edge/testing/
+#        printf "\n" | pecl install zookeeper
+#        docker-php-ext-enable zookeeper
+#    else
+#        echo "---------- PHP Version>= 7.0----------"
+#    fi
+#fi
 
 if [[ -z "${EXTENSIONS##*,phalcon,*}" ]]; then
     echo "---------- Install phalcon ----------"
